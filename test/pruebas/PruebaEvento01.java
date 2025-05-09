@@ -4,28 +4,29 @@
  */
 package pruebas;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import compevento01.CompEvent01Listener;
+import compevento01.ObjetoEvento;
 
 /**
  *
  * @author Manuel
  */
-public class PruebaCompartida extends javax.swing.JFrame {
+public class PruebaEvento01 extends javax.swing.JFrame {
 
     /**
-     * Creates new form PruebaCompartida
+     * Creates new form PruebaEvento01
      */
-    public PruebaCompartida() {
+    public PruebaEvento01() {
         initComponents();
         
-        PropertyChangeListener li = new PropertyChangeListener(){
+        CompEvent01Listener li = new CompEvent01Listener() {
             @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                System.out.println("El nuevo valor es:" + txtPropCompartida1.getDato());
+            public void respuesta(ObjetoEvento datEvento) {
+                visor.setTexto(datEvento.getSource().toString());
             }
         };
-        txtPropCompartida1.addPropertyChangeListener(li);
+        compEvent011.addCompEvent01Listener(li);
+        
     }
 
     /**
@@ -37,32 +38,44 @@ public class PruebaCompartida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtPropCompartida1 = new propiedades01.TxtPropCompartida();
+        compEvent011 = new compevento01.CompEvent01();
         jTextField1 = new javax.swing.JTextField();
+        visor = new compevento01.CompEvent01();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        compEvent011.setTitulo("Escribo algo");
+
         jTextField1.setText("jTextField1");
+
+        visor.setTitulo("Visor");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPropCompartida1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(compEvent011, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                        .addComponent(visor, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(txtPropCompartida1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(visor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(compEvent011, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         pack();
@@ -85,26 +98,27 @@ public class PruebaCompartida extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PruebaCompartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaEvento01.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PruebaCompartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaEvento01.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PruebaCompartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaEvento01.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PruebaCompartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PruebaEvento01.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PruebaCompartida().setVisible(true);
+                new PruebaEvento01().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private compevento01.CompEvent01 compEvent011;
     private javax.swing.JTextField jTextField1;
-    private propiedades01.TxtPropCompartida txtPropCompartida1;
+    private compevento01.CompEvent01 visor;
     // End of variables declaration//GEN-END:variables
 }
